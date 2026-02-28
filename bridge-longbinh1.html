@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Cầu Long Bình 1</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="toggle-theme" onclick="toggleTheme()">🌙 / ☀️</div>
+<!-- ÂM THANH NỀN -->
+<audio id="bgMusic" loop>
+  <source src="river-bridge.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-toggle" onclick="toggleMusic()">
+  🎵 
+</div>
+
+<header>
+  <div class="logo-box">
+  <img src="logo.png" alt="Logo Trường">
+  <span class="school-name">Trừờng THPT Phan Liêm</span>
+</div>
+  <h1>CẦU LONG BÌNH 1</h1>
+  <p>Cây cầu mới tại thành phố Trà Vinh</p>
+</header>
+<div class="back-btn">
+  <a href="bridges.html">← Quay lại danh sách</a>
+</div>
+
+<section class="bridge-info card">
+</ul>
+<img src="longbinh1.jpg">
+<li><strong>Tên chính thức:</strong> Cầu Long Bình 1 </li>
+<li><strong>Vị trí:</strong> kết nối giao thông khu vực nội ô thành phố với khu vực lân cận gồm huyện Châu Thành </li>
+  <li><strong> khởi công:</strong>13/6/2023 </li>
+<li><strong> hoàn thành:</strong> 01/7/2024</li>
+  <li><strong>Chiều dài:</strong> 54 m</li>
+<li><strong>Chiều rộng:</strong> 12 m</li>
+<li><strong>Tải trọng:</strong> HL93 </li>
+<li><strong>Loại cầu :</strong> Bê tông cốt thép </li>
+  <li><strong>Tổng mức đầu tư:</strong> 63 tỷ đồng </li>
+<li><strong>Vai trò:</strong> Giảm ùn tắc giao thông trung tâm thành phố</li>
+  
+</ul>
+ 
+</section>
+<section class="section card">
+  <h2>🎥 Video giới thiệu cầu</h2>
+
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/WRuBTTH3R-o"
+      title="Video giới thiệu cầu"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <p class="video-note">
+    Nếu video không hiển thị, xem trực tiếp tại:
+    <a href="https://youtu.be/WRuBTTH3R-o?si=y-0MMpxrdrbDahvh" target="_blank">
+      YouTube – Cầu Long Bình 1
+    </a>
+  </p>
+</section>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem(
+    "theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+
+window.onload = function () {
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+};
+</script>
+  <script>
+const bgMusic = document.getElementById("bgMusic");
+const musicBtn = document.querySelector(".music-toggle");
+
+// LẤY TRẠNG THÁI CŨ
+let musicOn = localStorage.getItem("music") !== "off";
+
+// KHỞI ĐỘNG
+window.addEventListener("load", () => {
+  if (musicOn) {
+    bgMusic.volume = 0.4;
+    bgMusic.play().catch(()=>{});
+  } else {
+    musicBtn.classList.add("off");
+    musicBtn.textContent = "🔇 ";
+  }
+});
+
+// BẬT / TẮT
+function toggleMusic() {
+  musicOn = !musicOn;
+  if (musicOn) {
+    bgMusic.play();
+    musicBtn.textContent = "🎵";
+    musicBtn.classList.remove("off");
+    localStorage.setItem("music", "on");
+  } else {
+    bgMusic.pause();
+    musicBtn.textContent = "🔇";
+    musicBtn.classList.add("off");
+    localStorage.setItem("music", "off");
+  }
+}
+</script>
+
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer>© 2025| Dự án Website nhóm 9 lớp 12D1 – Chủ đề 4 | Cây cầu nổi tiếng</footer>
+</body>
+</html>
